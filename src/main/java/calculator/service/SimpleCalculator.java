@@ -9,7 +9,7 @@ public class SimpleCalculator implements Calculator {
 
     public SimpleCalculator() {
         this.delimiterExtractor = new SimpleDelimiterExtractor();
-        this.numberParser = new NumberParser();
+        this.numberParser = new SimpleNumberParser();
     }
 
     @Override
@@ -21,10 +21,10 @@ public class SimpleCalculator implements Calculator {
 
         // delimiter 추출
         String delimiter = delimiterExtractor.extract(input);
-        String numberRemovedDelimiter = delimiterExtractor.removeDelimiter(input);
+        String numberPart = delimiterExtractor.removeDelimiter(input);
 
         // 숫자 파싱
-        Numbers numbers = numberParser.parse(numberRemovedDelimiter);
+        Numbers numbers = numberParser.parse(numberPart, delimiter);
 
         // 계산
         return sum(numbers);

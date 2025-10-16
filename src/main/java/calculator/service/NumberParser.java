@@ -2,9 +2,9 @@ package calculator.service;
 
 import calculator.model.Numbers;
 
-public class NumberParser {
-
-    public Numbers parse(String numberRemovedDelimiter) {
-        return null;
-    }
+/**
+ * 숫자 변환 담당
+ */
+public interface NumberParser {
+    Numbers parse(String input, String delimiter);
 }
