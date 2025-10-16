@@ -38,9 +38,9 @@ class DelimiterExtractorTest {
         assertThat(extractedDelimiter)
             .isEqualTo("[");
     }
-    
+
     @Test
-    @DisplayName("커스텀 구분자가 비어 있는 경우 예외를 발생시킨다.")        
+    @DisplayName("커스텀 구분자가 비어 있는 경우 예외를 발생시킨다.")
     void emptyCustomDelimiterOccurException() throws Exception{
         // given
         String input = "//\n1,2,3";
