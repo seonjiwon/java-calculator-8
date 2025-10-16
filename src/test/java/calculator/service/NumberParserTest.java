@@ -1,13 +1,13 @@
 package calculator.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.Assertions.in;
 
+import calculator.exception.ErrorMessage;
 import calculator.model.Numbers;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.*;
 
 class NumberParserTest {
 
@@ -64,7 +64,8 @@ class NumberParserTest {
 
         // when, then
         assertThatThrownBy(() -> numberParser.parse(input, delimiter))
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage());
     }
 
     @Test
@@ -76,6 +77,7 @@ class NumberParserTest {
 
         // when, then
         assertThatThrownBy(() -> numberParser.parse(input, delimiter))
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ErrorMessage.NEGATIVE_NUMBER_NOT_ALLOWED.getMessage());
     }
 }

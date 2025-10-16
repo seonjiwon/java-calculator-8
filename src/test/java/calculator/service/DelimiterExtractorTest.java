@@ -1,9 +1,10 @@
 package calculator.service;
 
-import static org.assertj.core.api.Assertions.*;
-
+import calculator.exception.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.*;
 
 class DelimiterExtractorTest {
 
@@ -46,7 +47,8 @@ class DelimiterExtractorTest {
         String input = "//\n1,2,3";
         // when, then
         assertThatThrownBy(() -> extractor.extract(input))
-            .isInstanceOf(IllegalArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ErrorMessage.EMPTY_CUSTOM_DELIMITER.getMessage());
     }
 
     @Test
