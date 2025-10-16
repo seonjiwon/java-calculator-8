@@ -1,5 +1,6 @@
 package calculator.service;
 
+import calculator.exception.ErrorMessage;
 import calculator.model.Numbers;
 import java.util.Arrays;
 import java.util.List;
@@ -38,13 +39,13 @@ public class SimpleNumberParser implements NumberParser{
         try {
             return Integer.parseInt(string);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자가 아닌 값이 포함되어 있습니다");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage());
         }
     }
 
     private void validatePositive(int number) {
         if (number < 0) {
-            throw new IllegalArgumentException("숫자는 음수가 될 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.NEGATIVE_NUMBER_NOT_ALLOWED.getMessage());
         }
     }
 }

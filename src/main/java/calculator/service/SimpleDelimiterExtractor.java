@@ -1,5 +1,7 @@
 package calculator.service;
 
+import calculator.exception.ErrorMessage;
+
 public class SimpleDelimiterExtractor implements DelimiterExtractor{
 
     private static final String CUSTOM_DELIMITER_PREFIX = "//";
@@ -42,7 +44,7 @@ public class SimpleDelimiterExtractor implements DelimiterExtractor{
 
     private void validateCustomDelimiter(String customDelimiter) {
         if (customDelimiter.isEmpty()) {
-            throw new IllegalArgumentException("커스텀 구분자는 비어있을 수 없습니다.");
+            throw new IllegalArgumentException(ErrorMessage.EMPTY_CUSTOM_DELIMITER.getMessage());
         }
     }
 
