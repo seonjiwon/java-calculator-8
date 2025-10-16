@@ -21,7 +21,7 @@ public class SimpleCalculator implements Calculator {
 
         // delimiter 추출
         String delimiter = delimiterExtractor.extract(input);
-        String numberRemovedDelimiter = delimiterExtractor.removeDelimiter(input, delimiter);
+        String numberRemovedDelimiter = delimiterExtractor.removeDelimiter(input);
 
         // 숫자 파싱
         Numbers numbers = numberParser.parse(numberRemovedDelimiter);

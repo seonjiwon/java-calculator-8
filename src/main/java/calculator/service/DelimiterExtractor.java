@@ -4,5 +4,5 @@ public interface DelimiterExtractor {
 
     String extract(String input);
 
-    String removeDelimiter(String input, String delimiter);
+    String removeDelimiter(String input);
 }
