@@ -5,6 +5,9 @@ import calculator.service.SimpleCalculator;
 import calculator.view.InputView;
 import calculator.view.OutputView;
 
+/**
+ * 전체 흐름 제어
+ */
 public class CalculatorController {
 
     private final InputView inputView;
