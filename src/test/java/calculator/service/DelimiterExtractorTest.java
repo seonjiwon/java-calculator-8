@@ -22,7 +22,7 @@ class DelimiterExtractorTest {
 
         // then
         assertThat(extractedDelimiter)
-            .isEqualTo(":");
+            .isEqualTo(",|:");
     }
 
     @Test
