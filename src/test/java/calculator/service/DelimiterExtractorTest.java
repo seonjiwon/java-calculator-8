@@ -53,6 +53,39 @@ class DelimiterExtractorTest {
     }
 
     @Test
+    @DisplayName("유효하지 않은 커스텀 구분자 입력시 예외를 발생시킨다.")
+    void occurExceptionWhenInputIsInvalidCustomDelimiter() throws Exception{
+        // given
+        String input = "//a\\n1,2,3";
+        // when, then
+        assertThatThrownBy(() -> extractor.extract(input))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("커스텀 구분자가 두글자 이상일시 예외를 발생시킨다.")
+    void occurExceptionWhenInputCustomExceptionLongerThanOne() throws Exception{
+        // given
+        String input = "//}}\\n1,2,3";
+        // when, then
+        assertThatThrownBy(() -> extractor.extract(input))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage(ErrorMessage.INVALID_CUSTOM_DELIMITER_LENGTH.getMessage());
+    }
+
+    @Test
+    @DisplayName("커스텀 구분자가 기본 구분자일 경우 문제 없이 실행된다.")
+    void extractCustomDelimiterWhenCustomerDelimiterEqualsDefaultDelimiter() throws Exception{
+        // given
+        String input = "//:\\n1,2:3";
+        // when
+        String result = extractor.extract(input);
+
+        // then
+        assertThat(result).isEqualTo(DEFAULT_DELIMITER + "|" + Pattern.quote(":"));
+    }
+
+    @Test
     @DisplayName("기본 구분자 문장을 넣었을 경우 그대로 반환한다.")
     void removeDelimiterWithDefaultDelimiter() throws Exception{
         // given

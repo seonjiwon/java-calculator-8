@@ -9,6 +9,8 @@ public class SimpleDelimiterExtractor implements DelimiterExtractor{
     private static final String CUSTOM_DELIMITER_SUFFIX = "\\n";
     private static final String DEFAULT_DELIMITER = ",|:";
 
+    private static final String ALLOWED_CUSTOM_DELIMITER = "~!@#$%^&*()_+`={}[];<>?";
+
     @Override
     public String extract(String input) {
         // 커스텀 구분자가 있는 경우
@@ -46,6 +48,19 @@ public class SimpleDelimiterExtractor implements DelimiterExtractor{
     private void validateCustomDelimiter(String customDelimiter) {
         if (customDelimiter.isEmpty()) {
             throw new IllegalArgumentException(ErrorMessage.EMPTY_CUSTOM_DELIMITER.getMessage());
+        }
+
+        if (customDelimiter.length() != 1) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CUSTOM_DELIMITER_LENGTH.getMessage());
+        }
+
+        // 커스텀 구분자가 기본 구분자일 경우 그냥 패스
+        if (DEFAULT_DELIMITER.contains(customDelimiter)) {
+            return;
+        }
+
+        if (!ALLOWED_CUSTOM_DELIMITER.contains(customDelimiter)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_CUSTOM_DELIMITER.getMessage() + ALLOWED_CUSTOM_DELIMITER);
         }
     }
 
