@@ -1,6 +1,7 @@
 package calculator.service;
 
 import calculator.exception.ErrorMessage;
+import java.util.regex.Pattern;
 
 public class SimpleDelimiterExtractor implements DelimiterExtractor{
 
@@ -39,7 +40,7 @@ public class SimpleDelimiterExtractor implements DelimiterExtractor{
         String customDelimiter = input.substring(startIndex, endIndex);
         validateCustomDelimiter(customDelimiter);
 
-        return customDelimiter;
+        return escapeRegex(customDelimiter);
     }
 
     private void validateCustomDelimiter(String customDelimiter) {
@@ -48,5 +49,7 @@ public class SimpleDelimiterExtractor implements DelimiterExtractor{
         }
     }
 
-
+    private String escapeRegex(String customDelimiter) {
+        return Pattern.quote(customDelimiter);
+    }
 }

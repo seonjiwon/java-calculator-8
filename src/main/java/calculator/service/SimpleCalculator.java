@@ -30,11 +30,13 @@ public class SimpleCalculator implements Calculator {
         return sum(numbers);
     }
 
-    private int sum(Numbers numbers) {
-        return 0;
-    }
-
     private boolean isNullOrEmpty(String input) {
         return input == null || input.isEmpty();
+    }
+
+    private int sum(Numbers numbers) {
+        return numbers.getNumbers().stream()
+               .mapToInt(i -> i)
+               .sum();
     }
 }
