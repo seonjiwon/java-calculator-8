@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 public class SimpleDelimiterExtractor implements DelimiterExtractor{
 
     private static final String CUSTOM_DELIMITER_PREFIX = "//";
-    private static final String CUSTOM_DELIMITER_SUFFIX = "\n";
-    private static final String DEFAULT_DELIMITER = ",|;";
+    private static final String CUSTOM_DELIMITER_SUFFIX = "\\n";
+    private static final String DEFAULT_DELIMITER = ",|:";
 
     @Override
     public String extract(String input) {

@@ -27,7 +27,7 @@ class CalculatorTest {
     @DisplayName("커스텀 구분자 입력시 제대로 계산이 수행된다.")
     void calculateSuccessfulWhenInputIsCustomDelimiter() throws Exception{
         // given
-        String input = "//*\n1*2*3";
+        String input = "//[\\n1[2[3";
 
         // when
         int result = calculator.calculate(input);
