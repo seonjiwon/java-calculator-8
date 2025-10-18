@@ -11,9 +11,9 @@ public class SimpleDelimiterExtractor implements DelimiterExtractor{
 
     @Override
     public String extract(String input) {
-        // 커스텀 구분자가 없는 경우
+        // 커스텀 구분자가 있는 경우
         if (hasCustomDelimiter(input)) {
-            return extractCustomDelimiter(input);
+            return DEFAULT_DELIMITER + "|" + extractCustomDelimiter(input);
         }
 
         return DEFAULT_DELIMITER;

@@ -38,6 +38,20 @@ class CalculatorTest {
     }
 
     @Test
+    @DisplayName("커스텀, 정규 구분자 혼합 입력시 제대로 계산이 수행된다.")
+    void calculateSuccessfulWhenInputIsDefaultAndCustomDelimiter() throws Exception{
+        // given
+        String input = "//*\\n1,2*3";
+
+        // when
+        int result = calculator.calculate(input);
+
+        // then
+        assertThat(result)
+            .isEqualTo(6);
+    }
+
+    @Test
     @DisplayName("null 값 입력시 0이 반환된다.")
     void returnZeroWhenInputIsNull() throws Exception{
         // given

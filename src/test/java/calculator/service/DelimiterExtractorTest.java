@@ -11,6 +11,8 @@ class DelimiterExtractorTest {
 
     private final DelimiterExtractor extractor = new SimpleDelimiterExtractor();
 
+    private static final String DEFAULT_DELIMITER = ",|:";
+
     @Test
     @DisplayName("기본 구분자를 반환한다.")
     void extractDefaultDelimiter() throws Exception{
@@ -22,7 +24,7 @@ class DelimiterExtractorTest {
 
         // then
         assertThat(extractedDelimiter)
-            .isEqualTo(",|:");
+            .isEqualTo(DEFAULT_DELIMITER);
     }
 
     @Test
@@ -36,7 +38,7 @@ class DelimiterExtractorTest {
 
         // then
         assertThat(extractedDelimiter)
-            .isEqualTo(Pattern.quote("["));
+            .isEqualTo(DEFAULT_DELIMITER + "|" + Pattern.quote("["));
     }
 
     @Test
