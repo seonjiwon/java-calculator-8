@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
 
-    private final Calculator calculator = new SimpleCalculator();
+    private final Calculator calculator = new Calculator();
 
     @Test
     @DisplayName("기본 구분자 입력시 제대로 수행된다.")

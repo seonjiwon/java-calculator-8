@@ -1,8 +1,41 @@
 package calculator.service;
 
-/**
- * 계산기 서비스
- */
-public interface Calculator {
-    int calculate(String input);
+import calculator.model.Numbers;
+
+public class Calculator {
+
+    private final DelimiterExtractor delimiterExtractor;
+    private final NumberParser numberParser;
+
+    public Calculator() {
+        this.delimiterExtractor = new SimpleDelimiterExtractor();
+        this.numberParser = new SimpleNumberParser();
+    }
+
+    public int calculate(String input) {
+        // 유효성 체크
+        if (isNullOrEmpty(input)) {
+            return 0;
+        }
+
+        // delimiter 추출
+        String delimiter = delimiterExtractor.extract(input);
+        String numberPart = delimiterExtractor.removeDelimiter(input);
+
+        // 숫자 파싱
+        Numbers numbers = numberParser.parse(numberPart, delimiter);
+
+        // 계산
+        return sum(numbers);
+    }
+
+    private boolean isNullOrEmpty(String input) {
+        return input == null || input.isEmpty();
+    }
+
+    private int sum(Numbers numbers) {
+        return numbers.getNumbers().stream()
+               .mapToInt(i -> i)
+               .sum();
+    }
 }
