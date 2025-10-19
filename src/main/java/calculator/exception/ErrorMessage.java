@@ -8,7 +8,7 @@ public enum ErrorMessage {
     INVALID_CUSTOM_DELIMITER("사용 가능한 커스텀 구분자 목록은 다음과 같습니다."),
 
     // 숫자 파싱 관련
-    INVALID_NUMBER_FORMAT("숫자가 아닌 값이 포함되어 있습니다"),
+    INVALID_NUMBER_FORMAT("정수가 아닌 값이 포함되어 있습니다"),
     NEGATIVE_NUMBER_NOT_ALLOWED("숫자는 음수가 될 수 없습니다.")
     ;
 
