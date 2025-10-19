@@ -1,6 +1,5 @@
 package calculator.model;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -33,6 +32,6 @@ public class Numbers {
     }
 
     public List<Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
+        return numbers;
     }
 }

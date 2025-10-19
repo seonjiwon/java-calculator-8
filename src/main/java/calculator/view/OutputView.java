@@ -10,7 +10,7 @@ public class OutputView {
     }
 
     public void printErrorMessage(String message) {
-        System.err.println(ERROR_PROMPT + message);
+        System.out.println(ERROR_PROMPT + message);
     }
 
 }
